@@ -1,0 +1,16 @@
+div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+  padding: 10px;
+}
+
+#box1 {
+  /* default: border, padding 미포함*/
+  box-sizing: content-box;
+}
+
+#box2 {
+  /* border, padding 포함 */
+  box-sizing: border-box;
+}

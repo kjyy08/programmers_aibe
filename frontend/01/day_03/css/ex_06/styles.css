@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  background-color: lightgray;
+  /* content */
+  width: 200px;
+  height: 200px;
+
+  /* padding */
+  /* 내부 요소에서 여백을 줌 */
+  padding: 20px;
+
+  /* margin */
+  /* 외부 요소와 여백을 줌 */
+  /* margin 병합 현상 주의해야함 */
+  margin: 50px;
+
+  /* border */
+
+  border: 5px dotted green;
+}
+
+#box1 {
+  margin-bottom: 200px;
+}
+
+#box2 {
+  margin-top: 60px;
+}

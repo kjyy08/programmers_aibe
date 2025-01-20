@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p:nth-child(2n + 1) {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- div 태그 안에 p 태그를 넣는 식으로 작성 -->
+    <div style="color: green">
+      <!-- 인라인 스타일 CSS -->
+      <p style="color: blue; font-size: 30pt">
+        우선 적용
+        <!-- 폰트, 색상의 경우 자식 태그에게 상속됨 -->
+        <br /><span>후식으로는 요아정</span>
+      </p>
+      <!-- 우선순위에 의해 green 색 적용 -->
+      <p>우선순위에 의한 적용</p>
+    </div>
+
+    <div>
+      <p>김찌를 점심으로 먹을까</p>
+      <p>된찌를 점심으로 먹을까</p>
+      <p>냉면을 점심으로 먹을까</p>
+      <p>뭘 점심으로 먹을까</p>
+    </div>
+  </body>
+</html>

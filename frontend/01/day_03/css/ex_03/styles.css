@@ -1,0 +1,12 @@
+li {
+  color: rgb(49, 49, 232);
+  font-size: 15pt;
+}
+
+ol li {
+  color: red;
+}
+
+ol li {
+  color: green;
+}

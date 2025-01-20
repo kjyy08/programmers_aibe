@@ -1,0 +1,38 @@
+/* HTML 요소 선택자 */
+li {
+  color: blue;
+}
+
+/* HTML Class 선택자 */
+.kfood {
+  padding-left: 50px;
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.jfood {
+  color: black;
+  font-weight: bolder;
+}
+
+/* HTML ID 선택자 */
+#unique {
+  color: brown;
+  background-color: yellow;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#unique2 {
+  color: lightgray;
+  background-color: blue;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* HTML 전체 선택자 */
+* {
+  text-align: left;
+}
