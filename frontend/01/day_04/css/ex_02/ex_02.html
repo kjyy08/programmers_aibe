@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlexBox</title>
+    <style>
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+        font-size: 13pt;
+        margin-bottom: 10px;
+      }
+      .flex-item {
+        background-color: rgb(71, 73, 174);
+        border: 1px solid black;
+        width: 100px;
+        height: 30px;
+      }
+      .row {
+        flex-direction: row;
+      }
+      .row.reverse {
+        flex-direction: row-reverse;
+      }
+      .column {
+        flex-direction: column;
+      }
+      .column.reverse {
+        flex-direction: column-reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p style="margin: 0 40px; text-align: center">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+        corporis architecto placeat provident sequi atque voluptates doloremque
+        possimus dolor nostrum deserunt error magnam animi eius, veniam iste
+        voluptatem in facilis? Assumenda eveniet nam sit nostrum, odit
+        doloremque natus reprehenderit tenetur suscipit, vel fugiat reiciendis
+        qui magnam est totam nobis deserunt dolores mollitia et alias minima sed
+        eligendi possimus dolorem. Reiciendis! Dicta veritatis facilis
+        voluptatum sit sunt fuga aspernatur atque itaque dolore eius, adipisci
+        ipsam natus nihil sequi recusandae harum, suscipit perferendis nostrum
+        odio beatae nesciunt! Error accusamus expedita praesentium fugit!
+      </p>
+
+      <div style="text-align: center">
+        <img
+          style="width: 200px; height: 100px"
+          src="./choonsik.png"
+          alt="춘식이 고구마 내놔"
+        />
+      </div>
+      <div>
+        <img
+          style="display: block; margin: 0 auto; width: 500px; height: 350px"
+          src="./choonsik.png"
+          alt="춘식이 고구마 내놔"
+        />
+      </div>
+    </div>
+
+    <!-- 반응형 -->
+    <div class="flex-container row">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+
+    <div class="flex-container row reverse">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+
+    <div class="flex-container column">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+
+    <div class="flex-container column reverse">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
+    </div>
+
+    <div
+      class="flex-container"
+      style="
+        height: 500px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      "
+    >
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+    </div>
+    <div style="background-color: lightgray">
+      <div
+        style="
+          display: flex;
+          height: 200px;
+          /* align-items: center; */
+          /* flex-direction: column; */
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 5px;
+        "
+      >
+        <div style="background-color: bisque">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+          nostrum! Repellat iure quia eaque quaerat libero ducimus ut
+          consequuntur totam ullam minus placeat a, est obcaecati explicabo
+          tempore qui sequi? Aperiam ipsum dolores minima magni perspiciatis,
+          laudantium doloremque error repellendus sint quas corrupti modi qui
+          aliquam iste aliquid voluptas consequatur earum veritatis sit natus
+          architecto totam! Ex facere blanditiis fugit!
+        </div>
+        <div style="background-color: aquamarine">히힛</div>
+        <div style="background-color: aquamarine">메롱</div>
+      </div>
+    </div>
+  </body>
+</html>
