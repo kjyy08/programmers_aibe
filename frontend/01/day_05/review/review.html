@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>춘식이 포트폴리오</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="춘식이 포트폴리오" />
+    <meta property="og:description" content="춘식이의 매력을 소개합니다." />
+    <meta
+      property="og:image"
+      content="<!-- 여기에 이미지 URL을 넣어주세요 -->"
+    />
+    <meta
+      property="og:url"
+      content="<!-- 여기에 웹페이지 URL을 넣어주세요 -->"
+    />
+    <!-- Favicon -->
+    <link rel="icon" href="<!-- 여기에 favicon URL을 넣어주세요 -->" />
+    <style>
+      /* Custom CSS */
+      body {
+        padding-top: 20px;
+      }
+      .carousel-item {
+        max-height: 400px;
+        overflow: hidden; /* 넘치는 부분 숨기기 */
+      }
+
+      .carousel-item img,
+      .carousel-item iframe {
+        max-height: 400px;
+        width: 100%;
+        object-fit: cover; /* 컨텐츠를 크기에 맞게 자르기 */
+      }
+
+      .toast {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-4">춘식이 소개</h1>
+
+      <!-- Carousel -->
+      <div id="choonsikCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="/frontend/assets/images/choonsik.png"
+              class="d-block w-100"
+              alt="춘식이 이미지 1"
+            />
+            <!-- 이미지 1 URL -->
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/frontend/assets/images/choonsik.png"
+              class="d-block w-100"
+              alt="춘식이 이미지 2"
+            />
+            <!-- 이미지 2 URL -->
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/frontend/assets/images/choonsik.png"
+              class="d-block w-100"
+              alt="춘식이 이미지 3"
+            />
+            <!-- 이미지 3 URL -->
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/frontend/assets/images/choonsik.png"
+              class="d-block w-100"
+              alt="춘식이 이미지 4"
+            />
+            <!-- 이미지 4 URL -->
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/frontend/assets/images/choonsik.png"
+              class="d-block w-100"
+              alt="춘식이 이미지 5"
+            />
+            <!-- 이미지 5 URL -->
+          </div>
+          <div class="carousel-item">
+            <iframe
+              width="100%"
+              height="390"
+              src="https://www.youtube.com/embed/4Gy4LN9BsiY?si=NeUPeMoZdOdFXr_C"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <!-- 유튜브 동영상 1 URL -->
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#choonsikCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#choonsikCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- Toast -->
+      <div
+        class="toast align-items-center text-white bg-primary border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        id="myToast"
+      >
+        <div class="d-flex">
+          <div class="toast-body">춘식이의 매력에 빠져보세요!</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+
+      <!-- Spinner -->
+      <!-- <div class="text-center mt-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div> -->
+
+      <!-- Content from review.md -->
+      <div class="mt-4">
+        <h2>춘식이란?</h2>
+        <p>
+          춘식이는 카카오의 대표 캐릭터 중 하나로, 귀여운 외모와 독특한 성격으로
+          많은 사랑을 받고 있는 캐릭터입니다. 주로 라이언과 함께 등장하며,
+          유쾌하고 코믹한 매력을 가지고 있습니다.
+        </p>
+
+        <h2>춘식이의 특징</h2>
+        <ul>
+          <li>
+            <strong>동물</strong>: 고양이로 보이지만, 공식적으로는 정체가
+            명확하지 않습니다.
+          </li>
+          <li>
+            <strong>성격</strong>: 장난기 많고 호기심이 넘치는 성격을 가지고
+            있습니다.
+          </li>
+          <li>
+            <strong>외모</strong>: 귀여운 둥근 몸매와 커다란 눈, 표정 변화가
+            매력적입니다.
+          </li>
+          <li>
+            <strong>취미</strong>: 먹는 것을 좋아하며, 자주 라이언과 함께
+            재미있는 상황을 만듭니다.
+          </li>
+        </ul>
+
+        <h2>춘식이의 인기 요인</h2>
+        <ol>
+          <li>
+            <strong>유머</strong>: 일상에서 볼 수 있는 상황을 코믹하게 표현하여
+            공감을 이끕니다.
+          </li>
+          <li>
+            <strong>디자인</strong>: 단순하면서도 매력적인 디자인으로 남녀노소
+            모두에게 사랑받습니다.
+          </li>
+          <li>
+            <strong>스토리</strong>: 라이언과의 관계를 통해 다양한 이야기를
+            만들어내며, 사람들에게 웃음을 줍니다.
+          </li>
+        </ol>
+
+        <h2>춘식이를 즐기는 방법</h2>
+        <ul>
+          <li>
+            <strong>이모티콘</strong>: 카카오톡에서 춘식이 이모티콘을
+            다운로드하여 채팅을 더욱 재미있게 꾸며보세요.
+          </li>
+          <li>
+            <strong>굿즈</strong>: 춘식이 캐릭터 상품(인형, 스티커, 문구류 등)을
+            구매하여 일상에서 춘식이를 가까이 느껴보세요.
+          </li>
+          <li>
+            <strong>SNS</strong>: 카카오 공식 계정을 통해 춘식이의 새로운
+            콘텐츠를 확인하세요.
+          </li>
+        </ul>
+
+        <h2>마무리</h2>
+        <p>
+          춘식이는 단순한 캐릭터를 넘어 많은 사람들에게 웃음과 행복을 주는
+          존재입니다. 그의 유쾌한 매력을 느껴보고 싶다면, 다양한 콘텐츠와 굿즈를
+          통해 춘식이를 만나보세요!
+        </p>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, for certain components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Show toast on page load
+      const toastEl = document.getElementById("myToast");
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    </script>
+  </body>
+</html>
