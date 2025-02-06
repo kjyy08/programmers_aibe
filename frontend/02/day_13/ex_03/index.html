@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습1</title>
+  </head>
+  <body>
+    <div id="box">
+      <button id="stopBtn">멈춰!</button>
+    </div>
+
+    <script>
+      //  호출 스케줄링(매크로 큐) - 마이크로큐 (Promise)
+      //  setInterval
+
+      const lyrics = [
+        "사건은 다가와, ah-oh, ayy",
+        "거세게 커져가, ah-oh, ayy",
+        "That tick, that tick, tick bomb",
+        "That tick, that tick, tick bomb",
+        "감히 건드리지 못할 걸 (누구도 말이야)",
+        "지금 내 안에선, su-su-su-supernova",
+      ];
+
+      let i = 0;
+      const interval = setInterval(() => {
+        const tmp = document.createElement("p");
+        tmp.textContent = lyrics[i++];
+        document.querySelector("#box").appendChild(tmp);
+      }, 3000);
+      document.querySelector("#stopBtn").addEventListener("click", () => {
+        clearInterval(interval);
+        document.querySelector("#stopBtn").textContent = "멈춘 상태임";
+      });
+
+      //    위 코드의 문제점
+      //    1. 함수 자체의 실행시간은 관련 x
+      //    2. 콜백이 끝나야 다음 콜백 실행
+      //    3. 전체가 interval로 묶여있기에 반복적으로 동작하는 for, while에서 같은 처리가 가능함
+    </script>
+  </body>
+</html>

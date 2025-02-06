@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="controller">
+      <label>
+        메모 내용 :
+        <input name="memoText" type="text" /> </label
+      ><br />
+      <label>
+        배경 색상 :
+        <input id="colorInput" name="memoBgColor" type="color" />
+      </label>
+      <button>추가</button>
+    </form>
+    <section id="view"></section>
+    <script>
+      function goodBgColor() {
+        return `#${[...Array(3)]
+          .map(() => Math.floor(Math.random() * 56) + 200)
+          .map((v) => v.toString(16).padStart(2, "0"))
+          .join("")}`;
+      }
+      document.querySelector("#colorInput").value = goodBgColor();
+      const memoData = [
+        {
+          bgColor: goodBgColor(),
+          text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti harum quas, natus tempore omnis architecto debitis voluptatibus temporibus cupiditate, numquam cumque soluta molestiae expedita inventore optio, porro illum aspernatur nobis?",
+        },
+      ];
+      function drawMemo() {
+        const view = document.querySelector("#view");
+        view.innerHTML = "";
+        for (const memo of memoData) {
+          const memoElement = document.createElement("div");
+          memoElement.textContent = memo.text;
+          memoElement.style.backgroundColor = memo.bgColor;
+          view.appendChild(memoElement);
+          //  삭제 버튼 추가
+          const deleteButton = document.createElement("button");
+
+          deleteButton.textContent = "삭제";
+          deleteButton.style.width = "50px";
+          deleteButton.addEventListener("click", function () {
+            memoElement.remove(); //  해당 DOM 객체 삭제
+          });
+
+          memoElement.appendChild(deleteButton);
+        }
+      }
+      const controller = document.querySelector("#controller");
+
+      //    추가 버튼
+      controller.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const form = new FormData(controller);
+        const memo = {};
+        memo.text = form.get("memoText");
+        memo.bgColor = form.get("memoBgColor");
+        memoData.push(memo);
+        drawMemo();
+      });
+      drawMemo();
+    </script>
+  </body>
+</html>

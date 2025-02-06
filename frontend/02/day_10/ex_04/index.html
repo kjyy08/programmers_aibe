@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 2</title>
+  </head>
+  <body>
+    <button onclick="testBtnClick()">테스트 버튼</button>
+    <script>
+      function testBtnClick() {
+        alert("테스트 버튼 눌림");
+      }
+    </script>
+
+    <div>
+      <button onclick="increase()">증가하는 버튼</button>
+      <button onclick="decrease()">감소하는 버튼</button>
+    </div>
+
+    <div id="container">
+      <style>
+        #container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          justify-content: center;
+        }
+        #container > div {
+          display: flex;
+          text-align: center;
+          background-color: beige;
+          border-radius: 100%;
+          border: 1px solid black;
+          width: 100px;
+          height: 100px;
+          justify-content: center;
+          align-items: center;
+        }
+      </style>
+      <script>
+        let increaseNumber = 0;
+
+        function increase() {
+          const container = document.querySelector("#container");
+          console.log("increase(): ", container);
+
+          const textItem = document.createElement("div");
+          textItem.textContent = `${increaseNumber + 1}`;
+
+          const item = document.createElement("div");
+          item.id = `item`;
+          item.classList.add(`item-${increaseNumber++}`);
+          item.appendChild(textItem);
+          container.appendChild(item);
+        }
+
+        function decrease() {
+          let decreaseNumber = document.querySelectorAll("#item").length - 1;
+          console.log("decrease num: ", decreaseNumber);
+
+          const container = document.querySelector("#container");
+          console.log("decrease(): ", container);
+
+          const items = document.querySelectorAll("#item");
+          console.log(items);
+
+          const childItem = document.querySelector(`.item-${decreaseNumber}`);
+          console.log(childItem);
+
+          try {
+            container.removeChild(childItem);
+            increaseNumber -= 1;
+            // container.removeChild(container.lastElementChild); //  이런 방법도 있음
+          } catch {
+            alert("아이템 없음");
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

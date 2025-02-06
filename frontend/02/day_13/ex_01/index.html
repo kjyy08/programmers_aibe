@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습1</title>
+  </head>
+  <body>
+    <div id="box">
+      <p id="msg1">언젠가 될 거야~</p>
+      <button id="stopBtn">정지 버튼</button>
+    </div>
+
+    <script>
+      //    3초 후에 실행
+      //    timer = 식별자
+      const timer = setTimeout(() => {
+        // alert("취업시켜줘");
+        document.querySelector("#msg1").textContent = "밥은 먹고 살아야지";
+      }, 10000);
+      document.querySelector("#stopBtn").addEventListener("click", () => {
+        clearTimeout(timer);
+        document.querySelector("#msg1").textContent = "멈추셈";
+      });
+      console.log(timer);
+    </script>
+  </body>
+</html>

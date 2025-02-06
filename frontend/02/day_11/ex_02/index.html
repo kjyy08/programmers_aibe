@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOM</title>
+  </head>
+  <body>
+    <form id="controller">
+      <!-- label 태그는 특정 input에 이름표를 지정, 클릭 시 포커스 -->
+      <!-- label 까먹어서 다시 TIL 하면 좋을듯? -->
+      <label>
+        메모 내용:
+        <input type="text" name="memo" id="" /> </label
+      ><br />
+      <label>
+        배경 색상:
+        <input type="color" name="memo-background" id="label-color" />
+      </label>
+      <button>추가</button>
+    </form>
+
+    <section id="view"></section>
+
+    <script>
+      const memoConfig = [
+        {
+          backgroundColor: "#BBFFFF",
+          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit reiciendis aspernatur inventore unde dolor illum, dolores animi vero adipisci dicta esse asperiores corrupti laborum ea deleniti ipsa tenetur incidunt maxime?",
+          textSize: "23px",
+          border: "1px solid black",
+        },
+      ];
+
+      function getRandomBackgroundColor() {
+        return `#${[...Array(3)]
+          .map(() => Math.floor(Math.random() * 56) + 200)
+          .map((v) => v.toString(16).padStart(2, "0"))
+          .join("")}`;
+      }
+
+      function draw() {
+        const view = document.querySelector("#view");
+
+        for (const m of memoConfig) {
+          const el = document.createElement("div");
+          el.textContent = m.text;
+          el.style.backgroundColor = m.backgroundColor;
+          view.appendChild(el);
+        }
+      }
+
+      const controller = document.querySelector("#controller");
+
+      controller.addEventListener("submit", function submitHandler(event) {
+        //  #controller에 event listener로 등록
+        //  form 기본 제출을 막고 text, color 수정 필요
+        event.preventDefault();
+
+        const form = new FormData(controller);
+        console.log(...form.entries());
+
+        memoConfig[0].text = form.get("memo");
+        memoConfig[0].backgroundColor = form.get("memo-background");
+        draw();
+      });
+
+      document.querySelector("#label-color").style.backgroundColor =
+        getRandomBackgroundColor();
+      draw();
+    </script>
+  </body>
+</html>

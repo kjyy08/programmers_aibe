@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="controller">
+      <label>
+        메모 내용 :
+        <input name="memoText" type="text" /> </label
+      ><br />
+      <label>
+        배경 색상 :
+        <input id="colorInput" name="memoBgColor" type="color" />
+      </label>
+      <button>추가</button>
+    </form>
+    <section id="view"></section>
+    <script>
+      // (1) 굳이 수동으로나 프로그래밍적으로 지우지 않는다면
+      // (2) 특정 용량까지 보존되는
+      // (3) 특정 주소에 할당된
+      // (4) key-value 형태의 브라우저의 저장공간
+      //   console.log("localStorage", localStorage);
+      // (1) 특정 페이지가 열려 있는 동안에만 지속되는...
+      // (2) ... 다 같음
+      //   console.log("sessionStorage", sessionStorage);
+      function onload() {
+        function goodBgColor() {
+          return `#${[...Array(3)]
+            .map(() => Math.floor(Math.random() * 56) + 200)
+            .map((v) => v.toString(16).padStart(2, "0"))
+            .join("")}`;
+        }
+        document.querySelector("#colorInput").value = goodBgColor();
+        // const memoData = [
+        //   {
+        //     bgColor: goodBgColor(),
+        //     text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti harum quas, natus tempore omnis architecto debitis voluptatibus temporibus cupiditate, numquam cumque soluta molestiae expedita inventore optio, porro illum aspernatur nobis?",
+        //   },
+        // ];
+        // JSON.parse를 통해 문자열화 되어서 직렬화(Serialization, 메모리에 저장할 수 있게 변환)되었던 객체를 다시 파싱하여 역직렬화(Deserialization)하여 객체화하여 저장
+        // const memoData = [JSON.parse(localStorage.getItem("memo"))];
+        // const memoData = JSON.parse(localStorage.getItem("memoStorage"));
+        // 널 병합 연산자 (??)
+        const memoData = [
+          ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
+          ...(JSON.parse(sessionStorage.getItem("memoStorage")) ?? []),
+        ];
+        // console.log(memoData);
+        function drawMemo() {
+          const view = document.querySelector("#view");
+          view.innerHTML = "";
+          for (const memo of memoData) {
+            const memoElement = document.createElement("div");
+            memoElement.textContent = memo.text;
+            memoElement.style.backgroundColor = memo.bgColor;
+            view.appendChild(memoElement);
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "삭제";
+            deleteButton.addEventListener("click", () => {
+              memoElement.remove();
+            });
+            memoElement.appendChild(deleteButton);
+            // 로컬 저장 버튼
+            const localSaveButton = document.createElement("button");
+            localSaveButton.textContent = "로컬 저장 버튼";
+            localSaveButton.addEventListener("click", () => {
+              // key, value -> 둘다 string.
+              //   const memoStr = JSON.stringify(memo); // 직렬화. 문자열화
+              //   console.log(memoStr);
+              //   localStorage.setItem("memo", memoStr); // 저장
+              // false, [], "", 0, null, undefined
+              //   localStorage.clear()
+              // 인덱스를 잡아서 해당 것만 pop하거나 shift하거나... 이런거...
+              //   const memoStorage = localStorage.getItem("memoStorage")
+              //     ? localStorage.getItem("memoStorage")
+              //     : "[]";
+              //   console.log(memoStorage);
+              //   const memoStorage2 = JSON.parse(memoStorage);
+              //   console.log(memoStorage2);
+              //   memoStorage2.push(memo);
+              //   console.log(memoStorage2);
+              //   localStorage.setItem("memoStorage", JSON.stringify(memoStorage2));
+              localStorage.setItem(
+                "memoStorage",
+                JSON.stringify([
+                  ...(JSON.parse(localStorage.getItem("memoStorage")) ?? []),
+                  memo,
+                ])
+              );
+            });
+            memoElement.appendChild(localSaveButton);
+            // 세션 저장 버튼
+            const sessionSaveButton = document.createElement("button");
+            sessionSaveButton.textContent = "세션 저장 버튼";
+            sessionSaveButton.addEventListener("click", () => {
+              sessionStorage.setItem(
+                "memoStorage",
+                JSON.stringify([
+                  ...(JSON.parse(sessionStorage.getItem("memoStorage")) ?? []),
+                  memo,
+                ])
+              );
+            });
+            memoElement.appendChild(sessionSaveButton);
+          }
+        }
+        const controller = document.querySelector("#controller");
+        controller.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const form = new FormData(controller);
+          const memo = {};
+          memo.text = form.get("memoText");
+          memo.bgColor = form.get("memoBgColor");
+          memoData.push(memo);
+          drawMemo();
+        });
+        drawMemo();
+      }
+      onload();
+    </script>
+  </body>
+</html>
